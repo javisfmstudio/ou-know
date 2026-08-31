@@ -39,21 +39,21 @@ OU Know 是一個統一的數位內容管理平台，整合文章發布、資源
 | 角色 | 需求 |
 |------|-------|
 | 作者 | 使用 SEO 工具建立與編輯文章，管理 draft 狀態，並發布至目標受眾。 |
-| 編輯者 | 檢視與核准文章，管理內容分類與標籤，並處理 asset library。 |
-| 管理者 | 管理使用者帳號、權限、系統設定與 audit logs。 |
+| 編輯者 | 檢視與核准文章，管理內容分類與標籤，並處理資源庫。 |
+| 管理者 | 管理使用者帳號、權限、系統設定與稽核日誌。 |
 
 ## 5. 使用者流程
 
 ### UF-001 — 文章建立與發布
-1. 作者選擇「New Article」→ 顯示表單，包含 title、content、category、tags 與 SEO fields。
-2. 作者填寫必填欄位 → 系統驗證輸入（例如 title 必須填寫）。
+1. 作者選擇「New Article」→ 顯示表單，包含標題、內容、分類、標籤與 SEO 欄位。
+2. 作者填寫必填欄位 → 系統驗證輸入（例如標題必須填寫）。
 3. 作者點擊「Save Draft」→ 文章以「draft」狀態儲存。
 4. 作者點擊「Publish」→ 系統檢查狀態轉換規則；若有效，文章狀態變為「published」並對公眾可見。
 
 ### UF-002 — 資源上傳與管理
 1. 使用者上傳圖片 → 系統驗證檔案類型（jpg、png、gif、webp）與大小（≤10MB）。
-2. 系統將 asset 儲存至媒體庫；產生縮圖預覽。
-3. 使用者將 asset 關聯至文章 → 系統更新文章的媒體參照。
+2. 系統將資源儲存至媒體庫；產生縮圖預覽。
+3. 使用者將資源關聯至文章 → 系統更新文章的媒體參照。
 
 ### UF-003 — 使用者登入與密碼管理
 1. 使用者輸入帳密憑證（credentials）→ 系統比對已儲存的帳密憑證。
@@ -64,23 +64,23 @@ OU Know 是一個統一的數位內容管理平台，整合文章發布、資源
 ## 6. 功能需求
 
 ### FR-001 — 文章建立表單
-- **Implements：** UF-001 step 1
-- **Requirement：** 系統必須提供表單用於建立新文章，包含 title、content、category、tags 與 SEO metadata 欄位。
-- **Acceptance criteria：**
+- **實作：** UF-001 step 1
+- **需求：** 系統必須提供表單用於建立新文章，包含標題、內容、分類、標籤與 SEO metadata 欄位。
+- **驗收標準：**
   - Given 使用者在文章建立頁面
     When 表單顯示時
-    Then 所有必填欄位（title、content、category、tags、SEO metadata）皆可見且可編輯
+    Then 所有必填欄位（標題、內容、分類、標籤與 SEO metadata）皆可見且可編輯
   - Given 使用者建立新文章時
-    When 嘗試儲存但未填寫 title 時
+    When 嘗試儲存但未填寫標題時
     Then 系統顯示錯誤訊息
   - Given 使用者建立新文章時
-    When 選擇 category 時
-    Then 系統僅在接受有效 category 時允許送出
+    When 選擇分類時
+    Then 系統僅在接受有效分類時允許送出
 
 ### FR-002 — 文章狀態轉換
-- **Implements：** UF-001 step 3-4
-- **Requirement：** 文章狀態必須根據使用者操作在 draft、review 與 published 之間轉換。
-- **Acceptance criteria：**
+- **實作：** UF-001 step 3-4
+- **需求：** 文章狀態必須根據使用者操作在 draft、review 與 published 之間轉換。
+- **驗收標準：**
   - Given 文章處於「draft」狀態時
     When 作者點擊「Save Draft」時
     Then 文章狀態維持「draft」
@@ -92,9 +92,9 @@ OU Know 是一個統一的數位內容管理平台，整合文章發布、資源
     Then 系統要求先還原為「draft」狀態
 
 ### FR-003 — 資源上傳驗證
-- **Implements：** UF-002 step 1-2
-- **Requirement：** 系統必須驗證上傳的 asset 是否符合檔案類型與大小要求。
-- **Acceptance criteria：**
+- **實作：** UF-002 step 1-2
+- **需求：** 系統必須驗證上傳的資源是否符合檔案類型與大小要求。
+- **驗收標準：**
   - Given 使用者上傳圖片檔案時
     When 檔案類型為 JPG、PNG、GIF 或 WebP 且大小 ≤10MB 時
     Then 系統接受上傳並儲存至媒體庫
@@ -106,9 +106,9 @@ OU Know 是一個統一的數位內容管理平台，整合文章發布、資源
     Then 系統以錯誤訊息拒絕
 
 ### FR-004 — 密碼雜湊
-- **Implements：** UF-003 step 4
-- **Requirement：** 使用者密碼必須使用含鹽雜湊演算法（salted hashing algorithm）安全儲存。
-- **Acceptance criteria：**
+- **實作：** UF-003 step 4
+- **需求：** 使用者密碼必須使用含鹽雜湊演算法（salted hashing algorithm）安全儲存。
+- **驗收標準：**
   - Given 使用者建立新帳號或更新密碼時
     When 密碼儲存時
     Then 絕不以明文（plaintext）形式儲存
@@ -117,9 +117,9 @@ OU Know 是一個統一的數位內容管理平台，整合文章發布、資源
     Then 系統使用雜湊比對方式（hashed comparison method）進行比對
 
 ### FR-005 — 基於角色的存取控制
-- **Implements：** UF-003 step 1
-- **Requirement：** 系統必須對使用者操作執行基於角色的權限控制。
-- **Acceptance criteria：**
+- **實作：** UF-003 step 1
+- **需求：** 系統必須對使用者操作執行基於角色的權限控制。
+- **驗收標準：**
   - Given 管理者使用者時
     When 存取使用者管理功能時
     Then 可以建立、編輯與刪除帳號
@@ -131,20 +131,20 @@ OU Know 是一個統一的數位內容管理平台，整合文章發布、資源
     Then 可以核准或拒絕，但無法修改系統設定
 
 ### FR-006 — SEO Metadata 生成
-- **Implements：** 內容智慧（Content Intelligence）
-- **Requirement：** 系統必須根據文章內容生成 SEO metadata（title、description、keywords）。
-- **Acceptance criteria：**
+- **實作：** 內容智慧（Content Intelligence）
+- **需求：** 系統必須根據文章內容生成 SEO metadata（title、description、keywords）。
+- **驗收標準：**
   - Given 文章儲存時
     When 系統處理 SEO metadata 時
-    Then 系統會根據內容自動填入 title 與 description 欄位
+    Then 系統會根據內容自動填入標題與描述欄位
   - Given 使用者已手動設定 SEO metadata 時
     When 儲存文章時
     Then 系統保留其手動設定
 
 ### FR-007 — AI 內容寫作輔助
-- **Implements：** 內容智慧（Content Intelligence）
-- **Requirement：** 系統必須根據使用者輸入提供 AI 驅動建議（AI-driven suggestions）用於文章內容。
-- **Acceptance criteria：**
+- **實作：** 內容智慧（Content Intelligence）
+- **需求：** 系統必須根據使用者輸入提供 AI 驅動建議（AI-driven suggestions）用於文章內容。
+- **驗收標準：**
   - Given 使用者編輯文章時
     When 要求 AI 針對某個段落提供建議時
     Then 系統於 10 秒內產生相關內容
@@ -153,9 +153,9 @@ OU Know 是一個統一的數位內容管理平台，整合文章發布、資源
     Then 系統重寫該段落，同時維持核心語意
 
 ### FR-008 — 語氣調整工具
-- **Implements：** 內容智慧（Content Intelligence）
-- **Requirement：** 系統必須允許使用者調整寫作內容的語氣（例如 formal、casual）。
-- **Acceptance criteria：**
+- **實作：** 內容智慧（Content Intelligence）
+- **需求：** 系統必須允許使用者調整寫作內容的語氣（例如 formal、casual）。
+- **驗收標準：**
   - Given 使用者在編輯器中選取段落時
     When 選擇「Formal」語氣時
     Then 系統以專業用語重寫該段落
