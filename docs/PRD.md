@@ -13,59 +13,59 @@
 
 ## 1. Summary
 
-OU Know is a unified platform for digital content management, integrating article publishing, asset storage, user security, and AI-driven enhancements. It streamlines content workflows, centralizes media assets, ensures secure access, and provides intelligent SEO and writing tools to improve efficiency and quality.
+OU Know 是一個統一的數位內容管理平台，整合文章發布、資源儲存、使用者安全防護以及 AI 驅動的增強功能。它簡化內容工作流程、集中管理媒體資源、確保安全存取，並提供智慧 SEO 與寫作工具以提升效率與品質。
 
 ## 2. Problem & Goal
 
-- **Problem:** Content management is fragmented across multiple systems, leading to inefficiencies in publishing and inconsistent asset usage. There's a lack of centralized security controls and manual SEO processes.
-- **Goal:** Provide a single, secure platform that automates content workflows, centralizes digital assets, and leverages AI to enhance content creation and optimization.
+- **Problem:** 內容管理分散在多個系統中，導致發布效率低落與資源使用不一致。缺乏集中的安全控制機制與手動 SEO 流程。
+- **Goal:** 提供一個單一、安全的平台，自動化內容工作流程、集中管理數位資源，並利用 AI 增強內容創作與最佳化。
 
 ## 3. Scope
 
 **In scope**
-- Content & Article Management: CRUD operations for articles, including status transitions (draft, review, published, archived), category and tag management.
-- Digital Asset Management: Upload, store, and manage images and other media; associate with articles; versioning of assets.
-- Account & Security: User registration, login, password reset, role-based access control (admin, editor, author).
-- Content Intelligence: SEO metadata generation, AI-assisted content writing, tone adjustment tools.
+- Content & Article Management: 文章的 CRUD 操作，包含狀態轉換（draft、review、published、archived）、分類與標籤管理。
+- Digital Asset Management: 上傳、儲存與管理圖片及其他媒體；與文章關聯；資源版本控制。
+- Account & Security: 使用者註冊、登入、密碼重置、基於角色的存取控制（admin、editor、author）。
+- Content Intelligence: SEO metadata 生成、AI 輔助內容寫作、語氣調整工具。
 
 **Out of scope (Non-Goals)**
-- Mobile application development; only web-based interface.
-- Integration with third-party CRM or marketing automation tools.
-- Hardware-specific optimizations or server infrastructure management.
-- Custom AI model training; relies on external services.
+- Mobile application development；僅提供 web-based interface。
+- Integration with third-party CRM or marketing automation tools。
+- Hardware-specific optimizations or server infrastructure management。
+- Custom AI model training；依賴外部服務。
 
 ## 4. Users
 
 | User | Needs |
 |------|-------|
-| Content Author | Create and edit articles with SEO tools, manage draft status, and publish to target audiences. |
-| Editor | Review and approve articles, manage content categories and tags, and handle asset library. |
-| Admin | Manage user accounts, permissions, system settings, and audit logs. |
+| Content Author | 使用 SEO 工具建立與編輯文章，管理 draft 狀態，並發布至目標受眾。 |
+| Editor | 檢視與核准文章，管理內容分類與標籤，並處理 asset library。 |
+| Admin | 管理使用者帳號、權限、系統設定與 audit logs。 |
 
 ## 5. User Flows
 
 ### UF-001 — Article Creation and Publishing
-1. Author selects "New Article" → form appears with title, content, category, tags, and SEO fields.
-2. Author fills in required fields → system validates inputs (e.g., title must be present).
-3. Author clicks "Save Draft" → article saved with status "draft".
-4. Author clicks "Publish" → system checks status transition rules; if valid, article status becomes "published" and visible to public.
+1. Author 選擇「New Article」→ 顯示表單，包含 title、content、category、tags 與 SEO fields。
+2. Author 填寫必填欄位 → 系統驗證輸入（例如 title 必須填寫）。
+3. Author 點擊「Save Draft」→ 文章以「draft」狀態儲存。
+4. Author 點擊「Publish」→ 系統檢查 status transition rules；若有效，文章狀態變為「published」並對公眾可見。
 
 ### UF-002 — Asset Upload and Management
-1. User uploads image → system validates file type (jpg, png, gif, webp) and size (≤10MB).
-2. System stores asset in media library; generates thumbnail preview.
-3. User associates asset with article → system updates article's media references.
+1. User 上傳圖片 → 系統驗證檔案類型（jpg、png、gif、webp）與大小（≤10MB）。
+2. 系統將 asset 儲存至 media library；產生 thumbnail preview。
+3. User 將 asset 關聯至文章 → 系統更新文章的 media references。
 
 ### UF-003 — User Login and Password Management
-1. User enters credentials → system checks against stored credentials.
-2. On failed login, system displays error and tracks attempts.
-3. User requests password reset → system sends reset link to registered email.
-4. User resets password → system updates password hash and logs event.
+1. User 輸入 credentials → 系統比對已儲存的 credentials。
+2. 登入失敗時，系統顯示錯誤訊息並記錄嘗試次數。
+3. User 請求密碼重置 → 系統將 reset link 發送至註冊 email。
+4. User 重置密碼 → 系統更新 password hash 並記錄 event。
 
 ## 6. Functional Requirements
 
 ### FR-001 — Article Creation Form
 - **Implements:** UF-001 step 1
-- **Requirement:** System must provide a form for creating new articles with fields for title, content, category, tags, and SEO metadata.
+- **Requirement:** 系統必須提供表單用於建立新文章，包含 title、content、category、tags 與 SEO metadata 欄位。
 - **Acceptance criteria:**
   - Given a user is on the article creation page
     When the form is displayed
@@ -79,7 +79,7 @@ OU Know is a unified platform for digital content management, integrating articl
 
 ### FR-002 — Article Status Transition
 - **Implements:** UF-001 step 3-4
-- **Requirement:** Article status must transition between draft, review, and published based on user actions.
+- **Requirement:** Article 狀態必須根據使用者操作在 draft、review 與 published 之間轉換。
 - **Acceptance criteria:**
   - Given an article is in "draft" status
     When the author clicks "Save Draft"
@@ -93,7 +93,7 @@ OU Know is a unified platform for digital content management, integrating articl
 
 ### FR-003 — Asset Upload Validation
 - **Implements:** UF-002 step 1-2
-- **Requirement:** System must validate uploaded assets for file type and size.
+- **Requirement:** 系統必須驗證上傳的 asset 是否符合檔案類型與大小要求。
 - **Acceptance criteria:**
   - Given a user uploads an image file
     When the file is of type JPG, PNG, GIF, or WebP and ≤10MB
@@ -107,7 +107,7 @@ OU Know is a unified platform for digital content management, integrating articl
 
 ### FR-004 — Password Hashing
 - **Implements:** UF-003 step 4
-- **Requirement:** User passwords must be securely stored using a salted hashing algorithm.
+- **Requirement:** 使用者密碼必須使用 salted hashing algorithm 安全儲存。
 - **Acceptance criteria:**
   - Given a user creates a new account or updates their password
     When the password is stored
@@ -118,7 +118,7 @@ OU Know is a unified platform for digital content management, integrating articl
 
 ### FR-005 — Role-Based Access Control
 - **Implements:** UF-003 step 1
-- **Requirement:** System must enforce role-based permissions for user actions.
+- **Requirement:** 系統必須對使用者操作執行基於角色的權限控制。
 - **Acceptance criteria:**
   - Given an admin user
     When they access user management features
@@ -132,7 +132,7 @@ OU Know is a unified platform for digital content management, integrating articl
 
 ### FR-006 — SEO Metadata Generation
 - **Implements:** Content Intelligence
-- **Requirement:** System must generate SEO metadata (title, description, keywords) based on article content.
+- **Requirement:** 系統必須根據文章内容生成 SEO metadata（title、description、keywords）。
 - **Acceptance criteria:**
   - Given an article is saved
     When the system processes SEO metadata
@@ -143,7 +143,7 @@ OU Know is a unified platform for digital content management, integrating articl
 
 ### FR-007 — AI Content Writing Assistance
 - **Implements:** Content Intelligence
-- **Requirement:** System must provide AI-driven suggestions for article content based on user input.
+- **Requirement:** 系統必須根據使用者輸入提供 AI-driven suggestions 用於文章内容。
 - **Acceptance criteria:**
   - Given a user is editing an article
     When they request AI suggestions for a section
@@ -154,7 +154,7 @@ OU Know is a unified platform for digital content management, integrating articl
 
 ### FR-008 — Tone Adjustment Tool
 - **Implements:** Content Intelligence
-- **Requirement:** System must allow users to adjust the tone of written content (e.g., formal, casual).
+- **Requirement:** 系統必須允許使用者調整寫作內容的語氣（例如 formal、casual）。
 - **Acceptance criteria:**
   - Given a user selects a paragraph in the editor
     When they choose "Formal" tone
@@ -174,17 +174,17 @@ OU Know is a unified platform for digital content management, integrating articl
 
 ## 8. Constraints & Dependencies
 
-- **Hard constraints:** Must comply with GDPR for user data processing in EU regions.
-- **Dependencies:** Third-party AI services for content generation and SEO analysis (specific provider TBD).
+- **Hard constraints:** 必須符合 GDPR 對於歐盟地區使用者資料處理的規範。
+- **Dependencies:** 第三方 AI services 用於 content generation 與 SEO analysis（specific provider TBD）。
 
 ## 9. Success Metrics
 
-- 80% of published articles use AI-assisted SEO metadata.
-- Average article creation time reduced by 30% compared to previous process.
-- 95% of user logins succeed within 5 seconds.
+- 80% 已發布的文章使用 AI-assisted SEO metadata。
+- 平均文章建立時間較先前流程減少 30%。
+- 95% 的使用者登入在 5 秒內成功。
 
 ## 10. Open Questions & Assumptions
 
-- **Assumption:** All users have basic familiarity with web-based content management systems.
-- **Open question:** What are the specific third-party AI service providers to be used for content generation and SEO analysis, and their required integration points?
-- **Open question:** What are the exact security requirements for handling user data in different regions (e.g., GDPR, CCPA)?
+- **Assumption:** 所有使用者對 web-based content management systems 有基本熟悉度。
+- **Open question:** 用於 content generation 與 SEO analysis 的具體第三方 AI service providers 為何，及其所需的 integration points？
+- **Open question:** 不同地區處理使用者資料的具體安全要求為何（例如 GDPR、CCPA）？
