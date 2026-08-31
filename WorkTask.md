@@ -4,8 +4,8 @@
 
 | Work | Title | State | Status | Owner | Reviewer | Priority | Depends On | SubtaskOf | Rejects |
 |------|-------|-------|--------|-------|----------|----------|------------|-----------|---------|
-| T-001 | Create PRD | Requirement | In Progress | Planner | Foan | - | - | - | 0 |
+| T-001 | Create PRD | Requirement | Wait for Approval | Planner | Foan | - | - | - | 0 |
 
 ## Notes
-- Draft PRD exists at `docs/PRD_DRAFT_v1.md` for Planner review.
-- After Planner produces formal PRD, state advances to Gate 1.
+- Formal PRD at `docs/PRD.md` (commit c134304). T-001 awaiting Gate 1 approval by Foan/Mike.
+- After Gate 1 approval: T-001 → Done, project advances to Architecture, next task T-002 (Architecture Design).
