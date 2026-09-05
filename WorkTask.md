@@ -9,6 +9,7 @@
 
 ## Notes
 - Formal PRD at `docs/PRD.md` (approved commit 70c7c34). Gate 1 approved by Foan 2026-09-01 10:13 TST.
-- T-002 v1 (commit 62fc77d) superseded per Foan instruction 2026-09-05: re-design to maximize features of `ouknow_website` (Payload 3.x template) + original PJ-0002 PRD, keep proprietary API, extended DB schema.
-- T-002 v2 done by Architect at commit 7b0d2d6: `docs/architecture.md` v0.2 (Payload 3.x monolith + proprietary API layer, merged DB schema incl. AI/audit tables) + `docs/task-breakdown.md` v2. Awaiting Gate 2 approval (re-review).
+- T-002 v1 (commit 62fc77d) superseded per Foan instruction 2026-09-05.
+- T-002 v2 (commit 7b0d2d6) superseded per Foan instruction 2026-09-06: split into two independent repos (frontend presentation + backend API), headless Payload, no Next.js DB layer.
+- T-002 v3 done by Architect (session timeout, files written to disk) at commit add8a89: `docs/architecture.md` v0.3 (Repo A: Next.js frontend, no DB; Repo B: Payload 3.x headless API, PostgreSQL, Auth/RBAC, AI, Jobs; HTTP API contract between repos) + `docs/task-breakdown.md` v3. Awaiting Gate 2 approval (re-review).
 - Open questions pending Foan: (1) external AI provider identity, (2) regional data-security requirements beyond GDPR.
